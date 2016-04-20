@@ -1,0 +1,66 @@
+.blog {
+  h1 {
+    color: $blue;
+  }
+  .title h1 {
+    color: $white;
+  }
+  .featured-image {
+    margin-bottom: $global-margin;
+  }
+  .categories {
+    margin-bottom: $global-margin;
+  }
+  .share {
+     margin-bottom: $global-margin;
+    .text-gray1 {
+      margin-bottom: 4px;
+    }
+  }
+  .stLarge {
+    font-size: 14px !important;
+    display: inline-block;
+    padding: 8px 0 !important;
+    background-color: $blue-gray;
+    color: $white;
+    margin-right: 4px !important;
+    width: 36px !important;
+    text-align: center;
+    background-image: none !important;
+    height: auto !important;
+  }
+  .stButton, .stLarge {
+    margin: 0 !important;
+  }
+  .st_email_large .stLarge {
+    &::after {
+      content: "\f003";
+      font-family: "FontAwesome";
+    }
+  }
+  .st_facebook_large  .stLarge {
+    &::after {
+      content: "\f09a";
+      font-family: "FontAwesome";
+    }
+  }
+  .st_linkedin_large  .stLarge {
+    &::after {
+      content: "\f0e1";
+      font-family: "FontAwesome";
+    }
+  }
+  .st_twitter_large  .stLarge {
+    &::after {
+      content: "\f099";
+      font-family: "FontAwesome";
+    }
+  }
+}
+.row .blog {
+  margin-bottom: $global-margin * 2;
+  h1 {
+    font-size: rem-calc(26px);
+    text-transform: uppercase;
+  }
+}

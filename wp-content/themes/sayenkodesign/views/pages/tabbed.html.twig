@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <section class="header-image">
+        <img src="{{ get_field('image').url }}" />
+        <div class="row column">
+            <h1>{{ get_the_title() }}</h1>
+        </div>
+    </section>
+
+    <section class="tagline">
+        <div class="row column">
+            <span class="text-white">{{ get_field('tagline_white_text') }}</span> {{ get_field('tagline_color_text') }}
+        </div>
+    </section>
+
+    <section class="content">
+        <section class="tabbed-content">
+            <div class="row">
+                <div class="medium-3 columns">
+                    <ul class="tabs vertical" id="example-vert-tabs" data-tabs>
+                        {% for tab in get_field('tabbed_content') %}
+                            <li class="tabs-title {% if loop.first %}is-active{% endif %}">
+                                <a href="#panel{{ loop.index }}" {% if loop.first %}aria-selected="true"{% endif %}>{{ tab.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="medium-9 columns">
+                    <div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
+                        {% for tab in get_field('tabbed_content') %}
+                            <div class="tabs-panel {% if loop.first %}is-active{% endif %}" id="panel{{ loop.index }}">
+                                {{ tab.content | raw }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}

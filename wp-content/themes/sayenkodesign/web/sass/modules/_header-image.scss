@@ -1,0 +1,22 @@
+.header-image {
+  width: 100%;
+  img {
+    width: 100%;
+  }
+  .row.column {
+    position: relative;
+    h1 {
+      text-transform: uppercase;
+      color: $white;
+      position: absolute;
+      left: $global-margin;
+      bottom: $global-margin;
+      @include breakpoint(small only) {
+        font-size: 2rem;
+      }
+      @include breakpoint(large) {
+        left: 0;
+      }
+    }
+  }
+}

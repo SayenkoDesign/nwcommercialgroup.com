@@ -1,0 +1,40 @@
+.comment-form {
+  margin-top: $global-margin * 4;
+  h2 {
+    font-size: rem-calc(20px);
+  }
+  form {
+    background-color: $blue-light;
+    border-left: 4px solid $orange;
+    padding: $global-margin * 2;
+    textarea {
+      min-height: 128px;
+    }
+    input[type=text], textarea {
+      padding-left: 1rem;
+      &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color:    $blue;
+      }
+      &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color:    $blue;
+        opacity:  1;
+      }
+      &::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color:    $blue;
+        opacity:  1;
+      }
+      &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color:    $blue;
+      }
+      &:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+        color:    $blue;
+      }
+    }
+    input[type=submit] {
+      @include button-style($orange, darken($orange, 10%), $white);
+      font-size: 0.9rem;
+      padding: 0.7rem 1rem;
+      border: none;
+    }
+  }
+}

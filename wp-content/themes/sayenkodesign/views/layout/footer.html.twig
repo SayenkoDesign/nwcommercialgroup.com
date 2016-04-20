@@ -1,0 +1,38 @@
+<footer class="footer">
+    <div class="row">
+        <div class="large-8 columns">
+            <a href="{{ get_site_url() }}" class="logo"><img src="{{ get_template_directory_uri() }}/web/images-min/marcus-millchap.min.png" /></a>
+            <small>
+                &copy; 2016 Northwest Commercial Group | 601 Union Street, Suite 2710, Seattle, WA 98101
+                <br />
+                All rights reserved.
+                <a href="http://sayenkodesign.com/">Seattle Web Development</a> by
+                <a href="http://sayenkodesign.com/">Sayenko Design</a>
+            </small>
+        </div>
+        <div class="large-4 columns">
+            <div class="newsletter clearfix">
+                {{ do_shortcode("[gravityform id=2 title=false description=false]") |raw }}
+            </div>
+            <div class="social">
+                <ul class="simple menu">
+                    {% if get_field('linkedin', 'option') %}
+                        <li><a href="{{ get_field('linedin', 'option') }}" target="_blank" class="fa fa-fw fa-linkedin"></a></li>
+                    {% endif %}
+                    {% if get_field('instagram', 'option') %}
+                        <li><a href="{{ get_field('instagram', 'option') }}" target="_blank" class="fa fa-fw fa-instagram"></a></li>
+                    {% endif %}
+                    {% if get_field('pinterest', 'option') %}
+                        <li><a href="{{ get_field('pinterest', 'option') }}" target="_blank" class="fa fa-fw fa-pinterest"></a></li>
+                    {% endif %}
+                    {% if get_field('twitter', 'option') %}
+                        <li><a href="{{ get_field('twitter', 'option') }}" target="_blank" class="fa fa-fw fa-twitter"></a></li>
+                    {% endif %}
+                    {% if get_field('google_plus', 'option') %}
+                        <li><a href="{{ get_field('google_plus', 'option') }}" target="_blank" class="fa fa-fw fa-google-plus"></a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

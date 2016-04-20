@@ -1,0 +1,50 @@
+.marketing {
+  padding: 0 0 64px 0;
+  background-color: $white;
+  .gform_wrapper {
+    max-width: 100%;
+  }
+  .gform_wrapper .top_label .gfield_label {
+    display: none;
+  }
+  .gform_wrapper .gform_footer {
+    margin: 0;
+    padding: 0;
+  }
+  #gform_submit_button_4 {
+    @include button-style($orange, darken($orange, 10%), $white);
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+  }
+  h2 {
+    color: $blue;
+  }
+  form {
+    background-color: $blue-light;
+    border-left: 4px solid $orange;
+    padding: 30px;
+    input[type=text], input[type=password] {
+      padding-left: 1rem;
+      &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color:    $blue-gray;
+      }
+      &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color:    $blue-gray;
+        opacity:  1;
+      }
+      &::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color:    $blue-gray;
+        opacity:  1;
+      }
+      &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color:    $blue-gray;
+      }
+      &:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+        color:    $blue-gray;
+      }
+    }
+  }
+  .button {
+    margin: 0;
+  }
+}

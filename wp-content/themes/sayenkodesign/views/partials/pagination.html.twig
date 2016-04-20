@@ -1,0 +1,21 @@
+{% if max_pages > 1 %}
+    <ul class="pagination text-center" role="navigation" aria-label="Pagination">
+        {% if current_page == 1 %}
+            <li class="disabled"><i class="fa fa-angle-double-left"></i></li>
+        {% else %}
+            <li><a href="{{ get_pagenum_link() }}"><i class="fa fa-angle-double-left"></i></a></li>
+        {% endif %}
+        {% for i in 1..max_pages %}
+            {% if i == current_page %}
+                <li class="current"><span class="show-for-sr">You're on page</span> {{ current_page }}</li>
+            {% else %}
+                <li><a href="{{ get_pagenum_link(i) }}" aria-label="Page {{ i }}">{{ i }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if current_page == max_pages %}
+            <li class="disabled"><i class="fa fa-angle-double-right"></i></li>
+        {% else %}
+            <li><a href="{{ get_pagenum_link(max_pages) }}"><i class="fa fa-angle-double-right"></i></a></li>
+        {% endif %}
+    </ul>
+{% endif %}

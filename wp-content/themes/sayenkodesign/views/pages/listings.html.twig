@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <section class="title background">
+        <div class="row column">
+            <h1>Listings</h1>
+        </div>
+    </section>
+    <section class="content">
+        <div class="row small-up-1 medium-up-2 large-up-3">
+            {% for listing in listings %}
+                {% if listing %}
+                    <div class="column">
+                        {{ listing | raw }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="row column">
+            {% include "partials/pagination.html.twig" %}
+        </div>
+    </section>
+{% endblock %}
+{% block call_to_action %}
+    {% include 'partials/lets-talk.html.twig' with {
+    cta_text_blue: "There are additional listings.",
+    cta_text_dark_blue: "Get more information.",
+    cta_button_link: "#",
+    cta_button_text: "Let's Talk"
+    }%}
+{% endblock %}

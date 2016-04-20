@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <section class="title background">
+        <div class="row column">
+            <div class="links">
+                {% if prev_link %}<a href="{{ prev_link }}" class="prev"><i class="fa fa-angle-left fa-fw"></i></a>{% endif %}
+                {% if next_link %}<a href="{{ next_link | raw }}" class="next"><i class="fa fa-angle-right fa-fw"></i></a>{% endif %}
+            </div>
+            <h1>Listing</h1>
+        </div>
+    </section>
+    <section class="content listing">
+        <div class="row">
+            <div class="large-8 columns listing-images">
+                {% for image in get_field('images') %}
+                    {% if loop.index == 1 %}
+                        <div class="row column">
+                            <a href="{{ image.image.url }}" class="fancybox" data-fancybox-title="{{ loop.index }} of {{ loop.length }}">
+                                <img src="{{ image.image.url }}" />
+                            </a>
+                        </div>
+                    {% elseif loop.index == 2 %}
+                        <div class="row">
+                            <div class="medium-8 columns">
+                                <a href="{{ image.image.url }}" class="fancybox" data-fancybox-title="{{ loop.index }} of {{ loop.length }}">
+                                    <img src="{{ image.image.url }}" />
+                                </a>
+                            </div>
+                    {% elseif loop.index == 3 %}
+                            <div class="medium-4 columns">
+                               <a href="{{ image.image.url }}" class="fancybox" data-fancybox-title="{{ loop.index }} of {{ loop.length }}">
+                                   <img src="{{ image.image.url }}" />
+                               </a>
+                    {% elseif loop.index == 4 %}
+                        <a href="{{ image.image.url }}" class="fancybox" data-fancybox-title="{{ loop.index }} of {{ loop.length }}">
+                            <img src="{{ image.image.url }}" />
+                        </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="large-4 columns">
+                <h1>
+                    {{ get_the_title() }}
+                    <small>
+                        /
+                        <span class="text-orange">
+                            {% if get_field('confidential_location') %}
+                                Confidential Location
+                            {% else %}
+                                {{ get_field('city') }}
+                                {% if get_field('city') and get_field('state')%}, {% endif %}
+                                {{ get_field('state') }}
+                            {% endif %}
+                        </span>
+                    </small>
+                </h1>
+                <ul class="details no-bullet">
+                    <li>
+                        <span class="description">Price:</span>
+                        <span class="value">{{ get_field('pricing') }}</span>
+                    </li>
+                    <li>
+                        <span class="description">Cap Rate:</span>
+                        <span class="value">{{ get_field('cap_rate') }}</span>
+                    </li>
+                    <li>
+                        <span class="description">NOI</span>
+                        <span class="value">{{ get_field('noi') }}</span>
+                    </li>
+                    <li>
+                        <span class="description">Rentable SQ FT</span>
+                        <span class="value">{{ get_field('rentable_sq_ft') }}</span>
+                    </li>
+                    <li>
+                        <span class="description">Rentable SQ FT</span>
+                        <span class="value">{{ get_field('rentable_sq_ft') }}</span>
+                    </li>
+                    <li>
+                        <span class="description">Year Built</span>
+                        <span class="value">{{ get_field('year_built') }}</span>
+                    </li>
+                    <li>
+                        <span class="description">Lease Type</span>
+                        <span class="value">{{ get_field('lease_type') }}</span>
+                    </li>
+                </ul>
+                {% if get_field('investment_highlights') %}
+                    <h2>Investment Highlights</h2>
+                    <ul class="investments no-bullet">
+                        {% for highlight in get_field('investment_highlights') %}
+                            <li>{{ highlight.highlight }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <section class="marketing">
+        <div class="row column">
+            <h2>REQUEST PROPERTY MARKETING PACKAGE</h2>
+        </div>
+        <div class="row column">
+            {{ do_shortcode("[gravityform id=4 title=false description=false]") |raw }}
+        </div>
+    </section>
+{% endblock %}

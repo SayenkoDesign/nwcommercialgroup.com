@@ -1,0 +1,39 @@
+.title {
+  background-color: $blue;
+  padding: 1rem;
+  &.background {
+    background-image: url("../images-min/title.min.png");
+    background-size: cover;
+  }
+  h1 {
+    color: $white;
+    margin: 0;
+    line-height: 1;
+    text-transform: uppercase;
+    @include breakpoint(small only) {
+      font-size: 2rem;
+    }
+  }
+  .links {
+    float: right;
+    position: relative;
+    top: -2px;
+    @include breakpoint(medium) {
+      top: 3px;
+    }
+  }
+  .prev, .next {
+    color: $white;
+    &:hover {
+      color: $blue-light;
+    }
+  }
+  .fa {
+    border: 2px solid $white;
+    border-radius: 2px;
+    font-size: 32px;
+    &:hover {
+      border-color: $blue-light;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <section class="hero slick">
+        {% for slide in get_field("slides") %}
+            <div>
+                <img src="{{ slide.image.sizes.home_slider }}" alt="" />
+                <div class="row column">
+                    <div class="content">
+                        <a href="{{ slide.url }}">{{ slide.title }} <i class="arrow">&gt;&gt;</i></a>
+                        {{ slide.text }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section class="tagline">
+        <div class="row column">
+            <span class="text-white">{{ get_field('tagline_white_text') }}</span> {{ get_field('tagline_color_text') }}
+        </div>
+    </section>
+
+    {% if get_field("left_title") or get_field("left_infographic").url is defined or get_field("right_title") or get_field("right_accordion") %}
+        <section class="content">
+            <div class="row">
+                <div class="medium-6 columns">
+                    <h3 class="bold">{{ get_field("left_title") }}</h3>
+                    {% if get_field("left_infographic").url is defined %}
+                        <img src="{{ get_field("left_infographic").url }}" alt="">
+                    {% endif %}
+                </div>
+                <div class="medium-6 columns">
+                    <h3 class="bold">{{ get_field("right_title") }}</h3>
+                    <ul class="accordion" data-accordion data-allow-all-closed="true">
+                        {% for item in get_field("right_accordion") %}
+                            <li class="accordion-item" data-accordion-item>
+                                <a href="#" class="accordion-title">{{ item.title }}</a>
+                                <div class="accordion-content" data-tab-content>
+                                    {{ item.content | raw }}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}
+
+{% block call_to_action %}
+{% endblock %}

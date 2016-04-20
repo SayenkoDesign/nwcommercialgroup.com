@@ -1,0 +1,47 @@
+<header data-sticky-container>
+    <div class="{% if get_field('menu') == "Transparent" %}transparent{% endif %} title-bar" data-sticky data-options="marginTop:0;">
+        <div class="row column hide-for-small-only">
+            <div class="title-bar-left">
+                <a href="{{ home_url() }}">
+                    {% if get_field('menu') == "Transparent" %}
+                        <img src="{{ get_template_directory_uri() }}/web/images-min/logo-white.min.png" class="white-logo">
+                    {% endif %}
+                    <img src="{{ get_template_directory_uri() }}/web/images-min/logo-color.min.png" class="color-logo">
+                </a>
+            </div>
+            <div class="title-bar-right">
+                {{ wp_nav_menu ({
+                    "location": "Primary",
+                    "container": false,
+                    "menu_class": "dropdown menu",
+                    "echo": false,
+                    "walker": dropdown_menu_walker,
+                    'items_wrap': '<ul id=\"%1$s\" class=\"%2$s\" data-dropdown-menu>%3$s</ul>'
+                }) | raw }}
+            </div>
+        </div>
+        <div class="row column mobile-bar" data-responsive-toggle="mobile-menu" data-hide-for="medium">
+            <div class="float-left">
+                <a href="tel:+{{ get_field('phone', 'option') }}" class="fa fa-phone"></a>
+            </div>
+            <div class="float-right">
+                <a class="fa fa-bars" type="button" data-toggle></a>
+            </div>
+            <div class="float-center">
+                <a href="{{ home_url() }}">
+                    <img src="{{ get_template_directory_uri() }}/web/images-min/mobile-logo.min.jpg" class="mobile-logo">
+                </a>
+            </div>
+        </div>
+        {{ wp_nav_menu ({
+            "location": "Primary",
+            "container": false,
+            "menu_class": "vertical menu  hide-for-medium",
+            "menu_id": "mobile-menu",
+            "echo": false,
+            "walker": accordion_menu_walker,
+            'items_wrap': '<ul id=\"%1$s\" class=\"%2$s\" data-accordion-menu>%3$s</ul>'
+        }) | raw }}
+    </div>
+</header>
+<div class="menu-spacer {% if get_field('menu') == "Transparent" %}hide-for-medium{% endif %}"></div>

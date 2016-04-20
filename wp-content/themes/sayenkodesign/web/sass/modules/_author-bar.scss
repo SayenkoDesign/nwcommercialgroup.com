@@ -1,0 +1,47 @@
+.author-bar {
+  .day {
+    font-family: $header-font-family;
+    font-size: rem-calc(50px);
+    line-height: 1;
+    display: inline-block;
+    color: #404449;
+    &::after {
+      margin: $global-margin auto 0 auto;
+      content: " ";
+      display: block;
+      width: 20px;
+      height: 4px;
+      background-color: $blue-light;
+    }
+    @include breakpoint(large) {
+      text-align: center;
+      display: block;
+    }
+  }
+  .year {
+    font-size: rem-calc(12px);
+    margin-top: 4px;
+    margin-bottom: $global-margin / 2;
+    @include breakpoint(large) {
+      text-align: center;
+      margin-bottom: 0;
+    }
+  }
+  .author {
+    display: none;
+    margin-top: $global-margin * 2;
+    text-align: center;
+    font-size: rem-calc(12px);
+    img {
+      border-radius: 100%;
+      margin-bottom: $global-margin / 2;
+    }
+    .name {
+      color: #4a4f55;
+      font-weight: bold;
+    }
+    @include breakpoint(large) {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+<html>
+<head>
+    {% block meta %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="height=device-height,width=device-width,initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>{{ wp_title() | raw }}</title>
+    {% endblock %}
+
+    {% block stylesheets %}
+        {{ wp_head() | raw }}
+    {% endblock %}
+
+    {% if get_field('analytics_id', 'option') %}
+        {% if get_field('universal_analytics', 'option') %}
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', '{{ get_field('analytics_id', 'option') }}', 'auto');
+                ga('send', 'pageview');
+            </script>
+        {% else %}
+            <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', '{{ get_field('analytics_id', 'option') }}']);
+                _gaq.push(['_trackPageview']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+
+            </script>
+        {% endif %}
+    {% endif %}
+</head>
+<body {{ body_class() | raw }}>
+    {% block body %}
+        {% block header %}
+            {% include "layout/header.html.twig" %}
+        {% endblock %}
+
+        {% block content %}
+            <section class="content">
+                <div class="row column">
+                    <h1>{{ get_the_title() }}</h1>
+                    {{ get_the_content() | raw }}
+                </div>
+            </section>
+        {% endblock %}
+
+        {% block call_to_action %}
+            {% include 'partials/lets-talk.html.twig' with {
+                cta_text_blue: "We’re ready to help.",
+                cta_text_dark_blue: "Call us at 206-826-5760",
+                cta_button_link: "#",
+                cta_button_text: "Let's Talk"
+            }%}
+        {% endblock %}
+        {% block footer %}
+            {% include "layout/footer.html.twig" %}
+        {% endblock %}
+    {% endblock %}
+    {% block scripts %}
+        {{ wp_footer() | raw }}
+    {% endblock %}
+</body>
+</html>

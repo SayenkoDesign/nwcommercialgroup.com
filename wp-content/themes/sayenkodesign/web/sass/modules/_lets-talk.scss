@@ -1,0 +1,36 @@
+.lets-talk {
+  background-image: url("../images-min/talk.min.png");
+  background-size: cover;
+  padding: $global-margin+rem-calc(24px) 0 $global-margin+rem-calc(16px);
+  text-transform: uppercase;
+  h2 {
+    border-left: 4px solid $orange;
+    padding-left: $global-margin;
+    color: $blue-gray;
+    margin: 0;
+    font-size: rem-calc(24px);
+    .phone {
+      color: $blue;
+      display: block;
+      margin-bottom: $global-margin/2;
+      @include breakpoint(medium) {
+        display: inline;
+        margin: 0;
+      }
+    }
+    @include breakpoint(medium) {
+      font-size: rem-calc(34px);
+    }
+  }
+  .orange.button {
+    position: relative;
+    margin: 0;
+    font-size: 1rem;
+    font-family: $body-font-family;
+    @include breakpoint(medium) {
+      float: right;
+      top: -8px;
+      font-size: 1.25rem;
+    }
+  }
+}

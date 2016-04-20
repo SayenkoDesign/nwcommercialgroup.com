@@ -1,0 +1,6 @@
+.home h3 {
+  @include breakpoint(small only) {
+    font-size: 2rem;
+    margin: $global-margin 0;
+  }
+}

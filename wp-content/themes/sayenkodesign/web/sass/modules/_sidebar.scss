@@ -1,0 +1,15 @@
+.sidebar {
+  h4 {
+    color: $blue;
+  }
+  a, li {
+    color: $blue-gray;
+  }
+  .vertical.menu {
+    text-align: left;
+    margin-left: 0;
+    a {
+      padding-left: 0;
+    }
+  }
+}

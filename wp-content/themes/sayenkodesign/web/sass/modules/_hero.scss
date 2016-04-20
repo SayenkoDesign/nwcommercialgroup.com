@@ -1,0 +1,50 @@
+.hero {
+  width: 100%;
+  margin: 0;
+  background-color: $blue;
+  .slick-slide {
+    height: auto;
+    img {
+      width: 100%;
+    }
+  }
+  .row {
+    position: relative;
+  }
+  .content {
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    color: $white;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: rem-calc(16px);
+    padding: $global-margin/2;
+    a {
+      display: block;
+      color: #FFF;
+      font-size: rem-calc(18px);
+      font-family: $header-font-family;
+      line-height: 1;
+      .arrow {
+        color: $orange;
+        font-size: rem-calc(26px);
+        font-style: normal;
+        @include breakpoint(medium) {
+          font-size: rem-calc(39px);
+          line-height: 1.5;
+        }
+      }
+      @include breakpoint(medium) {
+        font-size: rem-calc(42px);
+      }
+    }
+    @include breakpoint(medium) {
+      right: 0;
+      bottom: $global-margin * 4;
+      width: rem-calc(360px);
+      padding: $global-margin;
+      font-size: rem-calc(26px);
+    }
+  }
+}

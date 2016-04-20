@@ -1,0 +1,148 @@
+.footer {
+  background-color: $blue-gray;
+  padding: 64px 0;
+  color: $white;
+  a {
+    color: $blue-light;
+  }
+  .logo img {
+    display: block;
+    vertical-align: baseline;
+    margin-bottom: $global-margin;
+    @include breakpoint(large) {
+      margin-bottom:0;
+      margin-right: 48px;
+      float: left;
+    }
+  }
+  small {
+    display: inline-block;
+    margin-bottom: $global-margin;
+    @include breakpoint(large) {
+      margin-bottom: 0;
+    }
+  }
+  .large-4.columns {
+    @include breakpoint(large) {
+      transform: translateY(-25%);
+    }
+  }
+  .newsletter {
+    .gform_wrapper {
+      margin: 0;
+    }
+    #gform_2 {
+      width: 100%;
+    }
+    #gform_2 .gform_body {
+      width: calc(100% - 85px);
+    }
+    #gform_2 #field_2_1 label {
+      display: none;
+    }
+    #gform_2 .gform_body, #gform_2 .gform_footer {
+      display: inline-block;
+      float: left;
+      clear: none;
+    }
+    #gform_2 .gform_body .ginput_container {
+      margin: 0;
+    }
+    #gform_2 .gform_body #input_2_1 {
+      margin: 0;
+      width: 100%;
+      padding: 0.5rem;
+    }
+    #gform_2 .gform_footer {
+      margin: 0;
+      padding: 0;
+    }
+    #gform_2 .gform_footer #gform_submit_button_2 {
+      @include button-style($orange, darken($orange, 10%), $white);
+      font-size: 0.9rem;
+      padding: 0.7rem 1rem;
+      margin: 0;
+    }
+    input[type=text] {
+      padding-left: 1rem;
+      &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color:    #512c11;
+      }
+      &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color:    #512c11;
+        opacity:  1;
+      }
+      &::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color:    #512c11;
+        opacity:  1;
+      }
+      &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color:    #512c11;
+      }
+      &:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+        color:    #512c11;
+      }
+    }
+  }
+  .social {
+    clear: both;
+    margin-top: $global-margin;
+    li {
+      margin-right: rem-calc(8px);
+    }
+    li:last-of-type {
+      margin: 0;
+    }
+    .fa {
+      font-size: rem-calc(18px);
+      color: $white;
+      border-radius: 100%;
+      width: rem-calc(32px);
+      height: rem-calc(32px);
+      &::before {
+        position: relative;
+        top: rem-calc(6px);
+      }
+      transition: all 0.2s ease-in-out;
+    }
+    .fa-instagram {
+      background-color: #70a5d0;
+      &:hover {
+        background-color: darken(#70a5d0, 10%);
+      }
+    }
+    .fa-pinterest {
+      background-color: #da80a8;
+      &:hover {
+        background-color: darken(#da80a8, 10%);
+      }
+    }
+    .fa-twitter {
+      background-color: #7dd0fa;
+      &:hover {
+        background-color: darken(#7dd0fa, 10%);
+      }
+    }
+    .fa-linkedin {
+      background-color: $blue-light;
+      &:hover {
+        background-color: darken($blue-light, 10%);
+      }
+    }
+    .fa-google-plus {
+      background-color: #e799af;
+      &:hover {
+        background-color: darken(#e799af, 10%);
+      }
+    }
+    @include breakpoint(medium) {
+      margin-right: 0.4rem;
+    }
+    @include breakpoint(large) {
+      text-align: right;
+    }
+  }
+  @include breakpoint(large) {
+    padding: 64px 0 24px 0;
+  }
+}

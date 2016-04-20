@@ -1,0 +1,18 @@
+.tabs {
+  border: none;
+}
+.tabs-title {
+  text-transform: uppercase;
+  a {
+    color: #222222;
+    border-bottom: 4px solid #efefef;
+    font-size: rem-calc(18px);
+    &:hover {
+      border-color: $white;
+    }
+  }
+}
+.tabs-title a[aria-selected="true"] {
+  border-bottom: 4px solid $orange;
+  color: $blue-gray;
+}

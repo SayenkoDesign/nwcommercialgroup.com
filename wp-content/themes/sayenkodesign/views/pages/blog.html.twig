@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <section class="title background">
+        <div class="row column">
+            <div class="links">
+                {% if prev_link %}<a href="{{ prev_link }}" class="prev"><i class="fa fa-angle-left fa-fw"></i></a>{% endif %}
+                {% if next_link %}<a href="{{ next_link | raw }}" class="next"><i class="fa fa-angle-right fa-fw"></i></a>{% endif %}
+            </div>
+            <h1>BLOG POST</h1>
+        </div>
+    </section>
+    <section class="content">
+        <div class="gradient"></div>
+        <div class="row">
+            <div class="large-9 columns">
+                <div class="row">
+                    <div class="large-2 columns author-bar">
+                        <div class="day">{{ get_the_date('d', get_the_ID()) }}</div>
+                        <div class="year">
+                            {{ get_the_date('M Y', get_the_ID()) }}
+                        </div>
+                        <div class="author">
+                            {{ get_avatar( get_the_author_meta('id'), 64, get_field('author_bio_image', 'user_' ~ get_the_author_meta('id'))) | raw }}
+                            <div class="text-gray1">Author</div>
+                            <div class="name">
+                                {{ get_the_author_meta( 'first_name' ) }} {{ get_the_author_meta( 'last_name' ) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="large-10 columns blog">
+                        <div class="featured-image">
+                            {{ get_the_post_thumbnail() | raw }}
+                        </div>
+                        <h1>{{ get_the_title() | raw }}</h1>
+                        <div class="blog-content">
+                            {{ get_the_content()| raw }}
+                        </div>
+                        <div class="categories">
+                            <ul class="menu simple">
+                                <li class="text-gray1">CATEGORIES: </li>
+                                {% for category in get_the_category() %}
+                                    <li>
+                                        <a href="{{ get_category_link(category.term_id) | raw }}">{{ category.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="share">
+                            <div class="text-gray1">SHARE THIS: </div>
+                            <span class='st_email_large' displayText='Email'></span>
+                            <span class='st_facebook_large' displayText='Facebook'></span>
+                            <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                            <span class='st_twitter_large' displayText='Tweet'></span>
+                            <script type="text/javascript">var switchTo5x=true;</script>
+                            <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+                            <script type="text/javascript">
+                                stLight.options({
+                                    publisher: "31abfba6-0978-4139-8479-d6e96f61d25f",
+                                    doNotHash: true,
+                                    doNotCopy: true,
+                                    hashAddressBar: false
+                                });
+                            </script>
+                        </div>
+                        <div class="comment-form">
+                            {{ comment_form({
+                                'title_reply': 'Leave a Comment',
+                                'label_submit': "SUBMIT",
+                            }) | raw }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="large-3 columns sidebar hide-for-small-only">
+                <div class="categories-menu">
+                    <h4>CATEGORIES</h4>
+                    <ul class="no-bullet">
+                        {% for category in get_categories() %}
+                            <li><a href="{{ get_category_link(category.term_id) }}">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="archives-menu">
+                    <h4>ARCHIVES</h4>
+                    <ul class="no-bullet">
+                        {{ wp_get_archives({
+                            'show_post_count': true
+                        }) | raw }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

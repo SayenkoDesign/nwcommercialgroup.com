@@ -1,0 +1,27 @@
+{% if images[0].image.sizes is defined %}
+    <div class="listing-teaser">
+        <a href="{{ link }}">
+            <img src="{{ images[0].image.sizes.listing_teaser }}" />
+            <div class="description">
+                <div class="float-left">
+                    <h4>
+                        <span>{{ title }}</span>
+                        <div class="location">
+                            {% if confidential_location %}
+                                Confidential Location
+                            {% else %}
+                                {{ city }}
+                                {% if city and state %}, {% endif %}
+                                {{ state }}
+                            </div>
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="float-right">
+                    <div class="price">{{ price }}</div>
+                    <div class="cap">CAP RATE {{ cap_rate }}</div>
+                </div>
+            </div>
+        </a>
+    </div>
+{% endif %}

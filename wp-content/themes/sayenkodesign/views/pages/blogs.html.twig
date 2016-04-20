@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <section class="title background">
+        <div class="row column">
+            <h1>{% if title is defined %}{{ title | raw }}{% else %}BLOG{% endif %}</h1>
+        </div>
+    </section>
+    <section class="content">
+        <div class="gradient"></div>
+        <div class="row">
+            <div class="medium-9 large-9 columns author-bar">
+                {% for blog in blogs %}
+                    {{ blog | raw }}
+                {% endfor %}
+            </div>
+            <div class="medium-3 large-3 columns sidebar hide-for-small-only">
+                <div class="categories-menu">
+                    <h4>CATEGORIES</h4>
+                    <ul class="no-bullet">
+                        {% for category in get_categories() %}
+                            <li><a href="{{ get_category_link(category.term_id) }}">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="archives-menu">
+                    <h4>ARCHIVES</h4>
+                    <ul class="no-bullet">
+                        {{ wp_get_archives({
+                            'show_post_count': true
+                        }) | raw }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% include 'partials/pagination.html.twig' %}
+    </section>
+{% endblock %}

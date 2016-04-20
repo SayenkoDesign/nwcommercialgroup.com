@@ -1,0 +1,187 @@
+$menu-hover-color: #bfe0f6;
+
+.sticky-container {
+  position: absolute;
+  width: 100%;
+  height: auto !important;
+  z-index: 2;
+}
+
+.logged-in .sticky {
+  padding-top: 50px;
+  @include breakpoint(783px) {
+    padding-top: 40px;
+  }
+}
+
+.title-bar {
+  width: 100%;
+  background-color: $white;
+  bottom: auto !important;
+  transition: background-color 0.5s ease;
+  padding: 0;
+  img {
+    margin-top: 0.7rem;
+  }
+  .color-logo, .white-logo {
+    max-width: 196px;
+    @include breakpoint(large) {
+      max-width: 100%;
+    }
+  }
+}
+
+.transparent {
+  @include breakpoint(medium) {
+    background-color: transparent !important;
+    .color-logo {
+      display: none;
+    }
+    .white-logo {
+      display: inline;
+    }
+  }
+  &.is-stuck {
+    @include breakpoint(medium) {
+      background-color: $white !important;
+    }
+    .color-logo {
+      display: inline;
+    }
+    .white-logo {
+      display: none;
+    }
+  }
+  #menu-primary {
+    a {
+      color: #FFF;
+      &:hover, &:active, &.active, &.current {
+        color: $menu-hover-color;
+      }
+    }
+  }
+}
+
+#menu-primary, .is-stuck #menu-primary {
+  a {
+    text-transform: uppercase;
+    font-size: rem-calc(12px);
+    padding: rem-calc(18px) rem-calc(9px);
+    color: $body-font-color;
+    &:after {
+      margin-top: 4px;
+      content :" ";
+      display: block;
+      width: 100%;
+      height: 1px;
+      position: relative;
+      border: none;
+    }
+    &:hover {
+      color: $orange;
+      &:after {
+        background-color: $blue-light;
+      }
+    }
+    @include breakpoint(large) {
+      font-size: rem-calc(14px);
+      padding: rem-calc(18px);
+    }
+  }
+  .contact a {
+    @include button( false, $orange, darken($orange, 10%) );
+    font-size: rem-calc(12px);
+    margin-top: 0.7rem;
+    margin-left: 9px;
+    &:after {
+      display: none;
+    }
+    @include breakpoint(large) {
+      font-size: 0.9rem;
+      margin-left: 18px;
+    }
+  }
+  .is-dropdown-submenu {
+    text-align: center;
+    top: 80%;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom: 4px solid $orange;
+    min-width: auto;
+    white-space: nowrap;
+  }
+  .submenu {
+    padding: 16px 10px;
+    a {
+      color: $body-font-color;
+      font-size: rem-calc(12px);
+      padding: rem-calc(8px) rem-calc(10px);
+      &::after {
+        display: none;
+      }
+      &:hover, &:active, &.active, &.current {
+        color: $orange;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.mobile-bar {
+  border-bottom: 2px solid $blue;
+  padding-bottom: 0.5rem;
+  padding-top: 0.7rem;
+  a {
+    color: $blue;
+  }
+  .fa {
+    font-size: 36px;
+  }
+  .fa-phone {
+    position: relative;
+    top: 2px;
+  }
+  .float-center {
+    text-align: center;
+  }
+  .mobile-logo {
+    max-width: 2.2rem;
+    margin: 0 auto;
+    position: relative;
+  }
+}
+#mobile-menu {
+  border-bottom: 2px solid $blue;
+}
+.vertical.menu {
+  text-align: center;
+  a {
+    color: $blue;
+    font-size: rem-calc(18px);
+    text-transform: uppercase;
+  }
+  .contact {
+    background-color: $orange;
+    &:hover {
+      background-color: darken($orange, 10%);
+    }
+    a {
+      color: $white;
+    }
+  }
+  .nested {
+    margin:0;
+  }
+  .is-accordion-submenu-parent > a::after {
+    border-color: $blue transparent transparent;
+    display: inline-block;
+    position: relative;
+    top: auto;
+    left: 1rem;
+  }
+  .is-submenu-item a {
+    font-size: 80%;
+  }
+}

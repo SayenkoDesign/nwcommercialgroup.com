@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="large-2 columns author-bar">
+        <div class="day">{{ get_the_date('d', get_the_ID()) }}</div>
+        <div class="year">
+            {{ get_the_date('M Y', get_the_ID()) }}
+        </div>
+        <div class="author">
+            {{ get_avatar( get_the_author_meta('id'), 64, get_field('author_bio_image', 'user_' ~ get_the_author_meta('id')) ) | raw }}
+            <div class="text-gray1">Author</div>
+            <div class="name">
+                {{ get_the_author_meta( 'first_name' ) }} {{ get_the_author_meta( 'last_name' ) }}
+            </div>
+        </div>
+    </div>
+    <div class="large-10 columns blog">
+        <div class="featured-image">
+            {{ get_the_post_thumbnail() | raw }}
+        </div>
+        <h1>{{ get_the_title() | raw }}</h1>
+        <div class="blog-content">
+            {{ get_the_excerpt()| raw }}
+        </div>
+    </div>
+</div>

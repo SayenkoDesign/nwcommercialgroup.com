@@ -1,0 +1,38 @@
+.single-post, .blog, .archive:not(.post-type-archive-listing) {
+  .content {
+    padding: 0;
+    > .row {
+      > .columns {
+        padding-top: 64px;
+        padding-bottom: 64px;
+      }
+      > .large-9 {
+        background-color: #f8f8f8;
+        @include breakpoint(large) {
+          padding-right: $global-margin * 3;
+        }
+      }
+      > .large-3 {
+        @include breakpoint(large) {
+          padding-left: $global-margin * 2;
+        }
+      }
+    }
+  }
+  @include breakpoint(large) {
+    .content {
+      position: relative;
+      .row {
+        position: relative;
+      }
+    }
+    .gradient {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      background: -moz-linear-gradient(left, #f8f8f8 50%, $white 50%);
+      background: -webkit-gradient(linear, left top, right top, from(#f8f8f8), color-stop(.5, #f8f8f8), color-stop(.5, $white));
+    }
+  }
+}

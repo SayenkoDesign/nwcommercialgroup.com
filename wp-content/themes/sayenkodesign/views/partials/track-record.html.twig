@@ -1,0 +1,23 @@
+<div class="listing-teaser">
+    <img src="{{ image.sizes.listing_teaser }}" />
+    <div class="description">
+        <div class="float-left">
+            <h4>
+                <span>{{ title }}</span>
+                <div class="location">
+                    {% if get_field('confidential_location') %}
+                        Confidential Location
+                    {% else %}
+                        {{ city }}
+                        {% if city and state %}, {% endif %}
+                        {{ state }}
+                    {% endif %}
+                </div>
+            </h4>
+        </div>
+        <div class="float-right">
+            {% if price %}<div class="price">{{ price }}</div>{% endif %}
+            {% if cap_rate %}<div class="cap">CAP RATE {{ cap_rate }}</div>{% endif %}
+        </div>
+    </div>
+</div>
