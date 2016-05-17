@@ -26,12 +26,19 @@
                                     <img src="{{ image.image.url }}" />
                                 </a>
                             </div>
-                    {% elseif loop.index == 3 %}
+                        {% if loop.last %}
+                            </div>
+                        {% endif %}
+                    {% elseif loop.index == 3 and image.image.url is defined %}
                             <div class="medium-4 columns">
                                <a href="{{ image.image.url }}" class="fancybox" data-fancybox-title="{{ loop.index }} of {{ loop.length }}">
                                    <img src="{{ image.image.url }}" />
                                </a>
-                    {% elseif loop.index == 4 %}
+                        {% if loop.last %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% elseif loop.index == 4 and image.image.url is defined %}
                         <a href="{{ image.image.url }}" class="fancybox" data-fancybox-title="{{ loop.index }} of {{ loop.length }}">
                             <img src="{{ image.image.url }}" />
                         </a>
@@ -42,16 +49,16 @@
             </div>
             <div class="large-4 columns">
                 <h1>
-                    {{ get_the_title() }}
+                    {{ get_the_title() | raw }}
                     <small>
                         /
                         <span class="text-orange">
                             {% if get_field('confidential_location') %}
                                 Confidential Location
                             {% else %}
-                                {{ get_field('city') }}
+                                {{ get_field('city') | raw }}
                                 {% if get_field('city') and get_field('state')%}, {% endif %}
-                                {{ get_field('state') }}
+                                {{ get_field('state') | raw }}
                             {% endif %}
                         </span>
                     </small>
@@ -59,38 +66,34 @@
                 <ul class="details no-bullet">
                     <li>
                         <span class="description">Price:</span>
-                        <span class="value">{{ get_field('pricing') }}</span>
+                        <span class="value">{{ get_field('pricing') |raw }}</span>
                     </li>
                     <li>
                         <span class="description">Cap Rate:</span>
-                        <span class="value">{{ get_field('cap_rate') }}</span>
+                        <span class="value">{{ get_field('cap_rate') |raw }}</span>
                     </li>
                     <li>
                         <span class="description">NOI</span>
-                        <span class="value">{{ get_field('noi') }}</span>
+                        <span class="value">{{ get_field('noi') | raw }}</span>
                     </li>
                     <li>
                         <span class="description">Rentable SQ FT</span>
-                        <span class="value">{{ get_field('rentable_sq_ft') }}</span>
-                    </li>
-                    <li>
-                        <span class="description">Rentable SQ FT</span>
-                        <span class="value">{{ get_field('rentable_sq_ft') }}</span>
+                        <span class="value">{{ get_field('rentable_sq_ft') | raw }}</span>
                     </li>
                     <li>
                         <span class="description">Year Built</span>
-                        <span class="value">{{ get_field('year_built') }}</span>
+                        <span class="value">{{ get_field('year_built') | raw }}</span>
                     </li>
                     <li>
                         <span class="description">Lease Type</span>
-                        <span class="value">{{ get_field('lease_type') }}</span>
+                        <span class="value">{{ get_field('lease_type') | raw }}</span>
                     </li>
                 </ul>
                 {% if get_field('investment_highlights') %}
                     <h2>Investment Highlights</h2>
                     <ul class="investments no-bullet">
                         {% for highlight in get_field('investment_highlights') %}
-                            <li>{{ highlight.highlight }}</li>
+                            <li>{{ highlight.highlight | raw }}</li>
                         {% endfor %}
                     </ul>
                 {% endif %}

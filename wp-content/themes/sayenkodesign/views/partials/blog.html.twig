@@ -14,7 +14,7 @@
     </div>
     <div class="large-10 columns blog">
         <div class="featured-image">
-            {{ get_the_post_thumbnail() | raw }}
+            {{ get_the_post_thumbnail(null, 'large') | raw }}
         </div>
         <h1>{{ get_the_title() | raw }}</h1>
         <div class="blog-content">

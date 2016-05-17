@@ -5,21 +5,21 @@
             <div class="description">
                 <div class="float-left">
                     <h4>
-                        <span>{{ title }}</span>
+                        <span>{{ title | raw }}</span>
                         <div class="location">
                             {% if confidential_location %}
                                 Confidential Location
                             {% else %}
-                                {{ city }}
+                                {{ city | raw }}
                                 {% if city and state %}, {% endif %}
-                                {{ state }}
+                                {{ state | raw }}
                             </div>
                         {% endif %}
                     </h4>
                 </div>
                 <div class="float-right">
-                    <div class="price">{{ price }}</div>
-                    <div class="cap">CAP RATE {{ cap_rate }}</div>
+                    <div class="price">{{ price | raw }}</div>
+                    <div class="cap">CAP RATE {{ cap_rate | raw }}</div>
                 </div>
             </div>
         </a>
