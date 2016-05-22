@@ -9,10 +9,16 @@
     background-color: rgba(0,0,0,0.6);
     color: $white;
   }
+  .float-left {
+    @include breakpoint(medium) {
+      max-width: 70%;
+    }
+  }
   .float-right {
     display: none;
     @include breakpoint(medium) {
       display: block;
+      max-width: 30%;
     }
   }
   img {
