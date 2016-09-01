@@ -37,6 +37,10 @@
     #gform_2 .gform_body {
       width: calc(100% - 85px);
     }
+    #gform_2 #field_2_1 {
+      margin: 0;
+      padding: 0;
+    }
     #gform_2 #field_2_1 label {
       display: none;
     }
@@ -60,8 +64,11 @@
     #gform_2 .gform_footer #gform_submit_button_2 {
       @include button-style($orange, darken($orange, 10%), $white);
       font-size: 0.9rem;
-      padding: 0.7rem 1rem;
+      padding: 0.25rem 1rem;
       margin: 0;
+      @include breakpoint(625px) {
+        padding: 0.7rem 1rem;
+      }
     }
     input[type=text] {
       padding-left: 1rem;
